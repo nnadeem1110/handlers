@@ -1,0 +1,18 @@
+#handler always run in the last. if you are adding user and that user is exist then the play will skip the handler and does not change in service or given instructions.
+---
+        - name: This playbook is all about how handler works
+          hosts: test2
+          become: true
+          tasks:
+                  - name: to create users
+                    user:
+                            name: test1
+                            state: present
+                    notify:
+                            - myhandler1 # handler name
+          handlers:
+                  - name: myhandler1 # hanler name given in notify
+                    service:
+                            name: chronyd
+                            state: restarted
+                            

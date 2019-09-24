@@ -14,5 +14,5 @@
                   - name: myhandler1 # hanler name given in notify
                     service:
                             name: chronyd
-                            state: restarted
+                            state: stopped
                             
